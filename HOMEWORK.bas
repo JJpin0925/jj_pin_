@@ -22,17 +22,11 @@ Sub CopyAndSum()
     Range("C1").Select
     ActiveCell.FormulaR1C1 = "總和"
 
-
-'指定msg類型
-Dim msg As String
-
 '從excel第2列到36列
-For rowIdx = 2 To 36
- msg = ""
+rowNum = Cells(Rows.Count, 1).End(xlUp).Row
+For rowIdx = 2 To rowNum
 '第4張表的c欄位(總數)=第一張表的c欄位(數量)+第二張表的c欄位(數量)+第二張表的c欄位(數量)
 Sheets(4).Cells(rowIdx, 3).Value = Sheets(1).Cells(rowIdx, 3).Value + Sheets(2).Cells(rowIdx, 3).Value + Sheets(3).Cells(rowIdx, 3).Value
-
-msg = Sheets(4).Cells(rowIdx, 3).Value
  
 
 Next
@@ -200,4 +194,3 @@ combSName.AddItem Sheets(i).Name
 Next
 
 End Sub
-
